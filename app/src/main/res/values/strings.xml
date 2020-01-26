@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Demo App</string>
+    <string name="activity_main_name">Activity A</string>
+    <string name="activity_another_name">Activity B</string>
+    <string name="button_start_finish">startActivity() → finish()</string>
+    <string name="button_finish_start">finish() → startActivity()</string>
+    <string name="activity_instance_id">Instance ID: %s</string>
+    <string name="button_show_toast">Show Toast</string>
+</resources>
