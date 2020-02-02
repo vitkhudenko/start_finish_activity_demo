@@ -1,9 +1,10 @@
 package vit.khundenko.android.startfinishactivity.demo
 
-import androidx.appcompat.app.AppCompatActivity
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_another.*
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -24,7 +25,15 @@ class AnotherActivity : AppCompatActivity() {
         activityInstanceId = savedInstanceState?.getString(KEY_STATE_INSTANCE_ID)
             ?: INSTANCE_COUNT.incrementAndGet().toString()
 
-        textViewId.text = getString(R.string.activity_instance_id, activityInstanceId)
+        @SuppressLint("SetTextI18n")
+        textViewId.text = getString(R.string.activity_instance_id, activityInstanceId) + "\n" +
+                IntentFlagUtils.getFlagNames(intent).let { flagNames ->
+                    "Intent flags: " + if (flagNames.isEmpty()) {
+                        "none"
+                    } else {
+                        "\n" + flagNames.joinToString()
+                    }
+                }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
